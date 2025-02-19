@@ -53,7 +53,7 @@ for schema, table, column, data_type, comment in columns:
     md_content += f"- **{column}**: {data_type}\n\n"
     md_content += f"  Description: {comment}\n\n"
 
-with open("database_documentation.md", "w", encoding="utf-8") as file:
+with open("example.md", "w", encoding="utf-8") as file:
     file.write(md_content)
 
 print("Documentation generated: database_documentation.md")
