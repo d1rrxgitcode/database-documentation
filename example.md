@@ -8,21 +8,21 @@
 
 **Fields:**
 
-- **id** (integer)
+- **id** | integer
 
-  Primary key identifier.
+  Description: Primary key identifier.
 
-- **order_id** (integer)
+- **order_id** | integer
 
-  Reference to Order table.
+  Description: Reference to Order table.
 
-- **product_id** (integer)
+- **product_id** | integer
 
-  Reference to Product table.
+  Description: Reference to Product table.
 
-- **quantity** (integer)
+- **quantity** | integer
 
-  The quantity of the order_item.
+  Description: The quantity of the order_item.
 
 --------------------------------------------------
 
@@ -30,17 +30,17 @@
 
 **Fields:**
 
-- **id** (integer)
+- **id** | integer
 
-  Primary key identifier.
+  Description: Primary key identifier.
 
-- **user_id** (integer)
+- **user_id** | integer
 
-  Reference to User table.
+  Description: Reference to User table.
 
-- **order_date** (timestamp without time zone)
+- **order_date** | timestamp without time zone
 
-  Order date.
+  Description: Order date.
 
 --------------------------------------------------
 
@@ -48,21 +48,21 @@
 
 **Fields:**
 
-- **id** (integer)
+- **id** | integer
 
-  Primary key identifier.
+  Description: Primary key identifier.
 
-- **order_id** (integer)
+- **order_id** | integer
 
-  Reference to Order table.
+  Description: Reference to Order table.
 
-- **amount** (numeric)
+- **amount** | numeric
 
-  The amount of the payment.
+  Description: The amount of the payment.
 
-- **payment_date** (timestamp without time zone)
+- **payment_date** | timestamp without time zone
 
-  Payment date.
+  Description: Payment date.
 
 --------------------------------------------------
 
@@ -70,17 +70,17 @@
 
 **Fields:**
 
-- **id** (integer)
+- **id** | integer
 
-  Primary key identifier.
+  Description: Primary key identifier.
 
-- **name** (character varying)
+- **name** | character varying
 
-  Product name.
+  Description: Product name.
 
-- **price** (numeric)
+- **price** | numeric
 
-  The price of the product.
+  Description: The price of the product.
 
 --------------------------------------------------
 
@@ -88,16 +88,16 @@
 
 **Fields:**
 
-- **id** (integer)
+- **id** | integer
 
-  Primary key identifier.
+  Description: Primary key identifier.
 
-- **name** (character varying)
+- **name** | character varying
 
-  User name.
+  Description: User name.
 
-- **email** (character varying)
+- **email** | character varying
 
-  Email address.
+  Description: Email address.
 
 --------------------------------------------------

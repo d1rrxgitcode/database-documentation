@@ -53,15 +53,15 @@ for schema, table, column, data_type, comment in columns:
         md_content += f"### Table {table}\n\n"
         md_content += "**Fields:**\n\n"
     
-    md_content += f"- **{column}** ({data_type})\n\n"
-    md_content += f"  {comment}\n\n"
+    md_content += f"- **{column}** | {data_type}\n\n"
+    md_content += f"  Description: {comment}\n\n"
 
 md_content += "-" * 50 + "\n"
 
 with open("example.md", "w", encoding="utf-8") as file:
     file.write(md_content)
 
-print("Documentation generated: database_documentation.md")
+print("Documentation generated: example.md")
 
 cursor.close()
 conn.close()
