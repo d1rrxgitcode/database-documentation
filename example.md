@@ -1,92 +1,103 @@
 # Database Documentation
 
-## Schema: public
+## Schema public
 
-### Table: order_items
+--------------------------------------------------
 
-**Fields:**
-
-- **id**: integer
-
-  Description: Id
-
-- **order_id**: integer
-
-  Description: Order id
-
-- **product_id**: integer
-
-  Description: Product id
-
-- **quantity**: integer
-
-  Description: Quantity
-
-### Table: orders
+### Table order_items
 
 **Fields:**
 
-- **id**: integer
+- **id** (integer)
 
-  Description: Id
+  Primary key identifier.
 
-- **user_id**: integer
+- **order_id** (integer)
 
-  Description: User id
+  Reference to Order table.
 
-- **order_date**: timestamp without time zone
+- **product_id** (integer)
 
-  Description: Order date
+  Reference to Product table.
 
-### Table: payments
+- **quantity** (integer)
 
-**Fields:**
+  The quantity of the order_item.
 
-- **id**: integer
+--------------------------------------------------
 
-  Description: Id
-
-- **order_id**: integer
-
-  Description: Order id
-
-- **amount**: numeric
-
-  Description: Amount
-
-- **payment_date**: timestamp without time zone
-
-  Description: Payment date
-
-### Table: products
+### Table orders
 
 **Fields:**
 
-- **id**: integer
+- **id** (integer)
 
-  Description: Id
+  Primary key identifier.
 
-- **name**: character varying
+- **user_id** (integer)
 
-  Description: Name
+  Reference to User table.
 
-- **price**: numeric
+- **order_date** (timestamp without time zone)
 
-  Description: Price
+  Order date.
 
-### Table: users
+--------------------------------------------------
+
+### Table payments
 
 **Fields:**
 
-- **id**: integer
+- **id** (integer)
 
-  Description: Id
+  Primary key identifier.
 
-- **name**: character varying
+- **order_id** (integer)
 
-  Description: Name
+  Reference to Order table.
 
-- **email**: character varying
+- **amount** (numeric)
 
-  Description: Email
+  The amount of the payment.
 
+- **payment_date** (timestamp without time zone)
+
+  Payment date.
+
+--------------------------------------------------
+
+### Table products
+
+**Fields:**
+
+- **id** (integer)
+
+  Primary key identifier.
+
+- **name** (character varying)
+
+  Product name.
+
+- **price** (numeric)
+
+  The price of the product.
+
+--------------------------------------------------
+
+### Table users
+
+**Fields:**
+
+- **id** (integer)
+
+  Primary key identifier.
+
+- **name** (character varying)
+
+  User name.
+
+- **email** (character varying)
+
+  Email address.
+
+--------------------------------------------------
