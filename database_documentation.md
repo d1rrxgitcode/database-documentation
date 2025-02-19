@@ -6,7 +6,7 @@
 
 **Fields:**
 
-- **id**: integerDescription: Поле id таблицы users
+- **id**: integer  Description: Поле id таблицы users
 
-- **varchar**: nameDescription: Varchar
+- **varchar**: name  Description: Varchar
 

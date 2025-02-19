@@ -51,7 +51,7 @@ for schema, table, column, data_type, comment in columns:
         md_content += "**Fields:**\n\n"
     
     md_content += f"- **{column}**: {data_type}"
-    md_content += f"Description: {comment}\n\n"
+    md_content += f"  Description: {comment}\n\n"
 
 with open("database_documentation.md", "w", encoding="utf-8") as file:
     file.write(md_content)
