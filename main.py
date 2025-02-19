@@ -8,7 +8,7 @@ from settings.db_connect import conn
 
 def generate_comment(column_name):
     column_name = column_name.replace('_', ' ')
-    return f"Auto-description: {column_name.capitalize()}"
+    return f"{column_name.capitalize()}"
 
 query = """
     SELECT 
@@ -43,14 +43,14 @@ for schema, table, column, data_type, comment in columns:
     
     if current_schema != schema:
         current_schema = schema
-        md_content += f"## Schema {schema}\n\n"
+        md_content += f"## Schema: {schema}\n\n"
     
     if current_table != table:
         current_table = table
-        md_content += f"### Table {table}\n\n"
+        md_content += f"### Table: {table}\n\n"
         md_content += "**Fields:**\n\n"
     
-    md_content += f"- **{column}** ({data_type})\n  {comment}\n\n"
+    md_content += f"- **{column}**: {data_type}  Description: {comment}\n\n"
 
 with open("database_documentation.md", "w", encoding="utf-8") as file:
     file.write(md_content)

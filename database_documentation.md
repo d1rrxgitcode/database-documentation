@@ -1,14 +1,12 @@
 # Database Documentation
 
-## Schema public
+## Schema: public
 
-### Table users
+### Table: users
 
 **Fields:**
 
-- **id** (integer)
-  Поле id таблицы users
+- **id**: integer  Description: Поле id таблицы users
 
-- **varchar** (name)
-  Auto-description: Varchar
+- **varchar**: name  Description: Varchar
 
