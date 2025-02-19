@@ -1,0 +1,61 @@
+import re
+
+import markdown
+
+from settings.config import settings
+from settings.db_connect import conn
+
+
+def generate_comment(column_name):
+    column_name = column_name.replace('_', ' ')
+    return f"Auto-description: {column_name.capitalize()}"
+
+query = """
+    SELECT 
+        c.table_schema,
+        c.table_name, 
+        c.column_name, 
+        c.data_type, 
+        pgd.description
+    FROM 
+        information_schema.columns c
+    LEFT JOIN 
+        pg_catalog.pg_statio_all_tables st ON c.table_schema = st.schemaname AND c.table_name = st.relname
+    LEFT JOIN 
+        pg_catalog.pg_description pgd ON pgd.objoid = st.relid AND pgd.objsubid = c.ordinal_position
+    WHERE 
+        c.table_schema NOT IN ('pg_catalog', 'information_schema')
+    ORDER BY 
+        c.table_schema, c.table_name, c.ordinal_position;
+"""
+
+cursor = conn.cursor()
+cursor.execute(query)
+columns = cursor.fetchall()
+
+md_content = "# Database Documentation\n\n"
+
+current_schema = None
+current_table = None
+
+for schema, table, column, data_type, comment in columns:
+    comment = comment or generate_comment(column)
+    
+    if current_schema != schema:
+        current_schema = schema
+        md_content += f"## Schema {schema}\n\n"
+    
+    if current_table != table:
+        current_table = table
+        md_content += f"### Table {table}\n\n"
+        md_content += "**Fields:**\n\n"
+    
+    md_content += f"- **{column}** ({data_type})\n  {comment}\n\n"
+
+with open("database_documentation.md", "w", encoding="utf-8") as file:
+    file.write(md_content)
+
+print("Documentation generated: database_documentation.md")
+
+cursor.close()
+conn.close()
